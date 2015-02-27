@@ -38,7 +38,14 @@ public class Graphe {
      * @param sommet
      * @param destination
      */
-    public void ajouterArete (int sommet, int destination) {
-        //TODO 
+    public void ajouterArete (int s, int d) {
+        
+        // Ajout de s à la liste des successeurs de d
+        listeSucc[s].add(d);
+        
+        // Ajout de d à la liste des successeurs de s
+        listeSucc[d].add(s);
+        
+    }
     }
 }
