@@ -1,3 +1,5 @@
+import java.util.Iterator;
+
 
 public class Graphe {
     
@@ -96,4 +98,24 @@ public class Graphe {
         // une deuxieme difference a ete trouvee
         return false;
     }
+    
+    public void display(){
+        
+        StringBuffer result = new StringBuffer();
+        result.append("Graphe : \n");
+        
+        for (int i = 0; i < listeSucc.length; i++) {
+            result.append(motsDepart[i] + " : ");
+            
+            Iterator<Integer> it = listeSucc[i].getSucc();
+            
+            for (Iterator<Integer> iterator = it; iterator.hasNext();) {
+                int type = iterator.next();
+                result.append(motsDepart[type] + ", ");
+            }
+            result.append("\n");
+        }
+        System.out.println(result);
+    }
+    
 }
