@@ -1,10 +1,21 @@
 
 public class Graphe {
     
+    /*
+     * Attributs
+     */
     protected String[] motsDepart;
     protected int      nombreMots;
     protected Liste[]  listeSucc;
 
+    /*
+     * Constructeurs
+     */
+    
+    /**
+     * Constructeur de graphe. Initialise le Graphe avec une liste de mots passés en paramètre.
+     * @param lesMots
+     */
     public Graphe(String[] lesMots) {
         motsDepart = lesMots;
         nombreMots = lesMots.length;
