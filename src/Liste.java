@@ -4,8 +4,11 @@ import java.util.Collection;
 
 public class Liste {
 
+    // Attributs
     private ArrayList<Integer> liste;
     
+    
+    //Constructeur
     public Liste() {
         liste = new ArrayList<Integer>();
     }
@@ -14,6 +17,8 @@ public class Liste {
         this.liste = liste;
     }
     
+    
+    //Méthodes
     public int getSize() {
         return liste.size();
     }
