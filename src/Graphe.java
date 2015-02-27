@@ -27,5 +27,9 @@ public class Graphe {
         }
         
     }
+    
+    /*
+     * Méthodes
+     */
 
 }
