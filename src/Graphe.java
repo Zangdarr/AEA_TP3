@@ -36,7 +36,17 @@ public class Graphe {
      * Initialise les listes de successeurs selon la règle du jeu de la lettre qui saute.
      */
     public void lettreQuiSaute() {
-        //TODO
+        // Pour chaque mot
+        for (int i = 0; i < nombreMots; i++) {
+            // Pour chaque mot qui n'a pas déjà été traité ou pas entrain de l'être
+            for (int j = i+1; j < nombreMots; j++) {
+                // si une seule lettre diffère
+                if(diffUneLettre(motsDepart[i], motsDepart[j])){
+                    // ajout d'une arête entre les deux mots
+                    ajouterArete(i, j);
+                }
+            }
+        }
     }
     
     
