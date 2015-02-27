@@ -33,6 +33,14 @@ public class Graphe {
      */
     
     /**
+     * Initialise les listes de successeurs selon la règle du jeu de la lettre qui saute.
+     */
+    public void lettreQuiSaute() {
+        //TODO
+    }
+    
+    
+    /**
      * Rajoute s à la liste des successeurs de d et d à celle de s, 
      * les mots d'indices s et d étant supposés différer d'une lettre
      * @param sommet
