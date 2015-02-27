@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Iterator;
 
 
 public class Liste {
@@ -40,4 +40,8 @@ public class Liste {
         liste.remove(index);
     }
     
+    public Iterator<Integer> getSucc(){
+        
+        return liste.iterator();
+    }
 }
