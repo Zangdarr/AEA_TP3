@@ -7,7 +7,11 @@ public class Liste {
     private ArrayList<Integer> liste;
     
     public Liste() {
-        // TODO Auto-generated constructor stub
+        liste = new ArrayList<Integer>();
+    }
+    
+    public Liste(ArrayList<Integer> liste) {
+        this.liste = liste;
     }
     
     public int getSize() {
