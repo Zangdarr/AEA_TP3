@@ -4,11 +4,17 @@ import java.util.Collection;
 
 public class Liste {
 
-    // Attributs
+    /*
+     * Attributs
+     */
+     
     private ArrayList<Integer> liste;
     
     
-    //Constructeur
+    /*
+     * Constructeur
+     */
+    
     public Liste() {
         liste = new ArrayList<Integer>();
     }
@@ -18,7 +24,10 @@ public class Liste {
     }
     
     
-    //Méthodes
+    /*
+     * Méthodes
+     */
+    
     public int getSize() {
         return liste.size();
     }
