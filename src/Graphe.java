@@ -8,7 +8,13 @@ public class Graphe {
     public Graphe(String[] lesMots) {
         motsDepart = lesMots;
         nombreMots = lesMots.length;
-        //TODO listSucc
+        
+        //initialisation de la liste des successeur avec des listes vides
+        listeSucc  = new Liste[nombreMots];
+        for (int i = 0; i < nombreMots; i++) {
+            listeSucc[i] = new Liste();
+        }
+        
     }
 
 }
