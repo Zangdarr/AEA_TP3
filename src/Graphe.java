@@ -47,5 +47,35 @@ public class Graphe {
         listeSucc[d].add(s);
         
     }
+    
+    
+    /**
+     * Recherche une difference entre les mots a et b, supposees de meme taille.
+     * @param a
+     * @param b
+     * @return true si une seule difference a ete trouvee sinon false
+     */
+    public boolean diffUneLettre (String a, String b) {
+        // a et b supposees de meme longueur
+        int i = 0;
+        
+        // parcouru du mot a la recherche d'une difference
+        while(i<a.length() && a.charAt(i) == b.charAt(i))
+            ++i;
+        
+        //on a parcouru le mot complet sans trouver de difference
+        if(i == a.length()) return false;
+        
+        ++i;
+        
+        //une difference a ete trouve, recherche d'une seconde differe,ce
+        while(i<a.length() && a.charAt(i) == b.charAt(i))
+            ++i;
+        
+        // le mot complet a ete parcouru et pas de seconde difference trouvee
+        if(i== a.length()) return true;
+        
+        // une deuxieme difference a ete trouvee
+        return false;
     }
 }
