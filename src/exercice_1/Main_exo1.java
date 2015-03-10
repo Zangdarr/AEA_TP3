@@ -1,5 +1,8 @@
 package exercice_1;
 
+import dictionnaires.Dicos;
+
+
 public class Main_exo1 {
     
     public static void main(String[] args) {
@@ -19,7 +22,7 @@ public class Main_exo1 {
         System.out.println("Dictionnaire 5");
         graphe_dico5.display();
     
-    
+        
     }
 
 }
