@@ -1,0 +1,13 @@
+Exercice 1 : Modélisation et initialisation du jeu de la lettre qui saute
+Le but du jeu est de passer d'un mot à un autre par une suite de mots tels qu'un mot et le suivant ne diffèrent que d'une lettre. 
+Par exemple, on peut passer de lion à peur par la suite de mots :
+
+lion --> pion --> paon --> pain --> paix --> poix --> poux --> pour --> peur
+
+
+
+Exercice 2 : Le but est de calculer les composantes connexes grâce à un parcours en profondeur.
+
+
+
+Exercice 3 : Le but est de calculer un chemin d'un mot à un autre s'il en existe un.
