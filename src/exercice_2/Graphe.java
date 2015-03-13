@@ -162,7 +162,7 @@ public class Graphe {
         }
         
         int i = 0;
-        for (Iterator iterator = composante.iterator(); iterator.hasNext();) {
+        for (Iterator<String> iterator = composante.iterator(); iterator.hasNext();) {
             System.out.println(i++ + ": " + (String) iterator.next());
         }
         
@@ -170,7 +170,7 @@ public class Graphe {
     
     public void getComposanteOf(String word){
         int i = 0;
-        for (Iterator iterator = composante.iterator(); iterator.hasNext();) {
+        for (Iterator<String> iterator = composante.iterator(); iterator.hasNext();) {
             if(((String)iterator.next()).contains(word)){
                System.out.println("La composante du mot \'" + word + "\' est la numéro " + i );
                return;
