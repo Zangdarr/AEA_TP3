@@ -1,4 +1,5 @@
 package exercice_2;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 
@@ -10,6 +11,8 @@ public class Graphe {
     protected String[] motsDepart;
     protected int      nombreMots;
     protected Liste[]  listeSucc;
+    protected boolean[] dejaVu;
+    protected ArrayList<String> composante;
 
     /*
      * Constructeurs
@@ -22,11 +25,13 @@ public class Graphe {
     public Graphe(String[] lesMots) {
         motsDepart = lesMots;
         nombreMots = lesMots.length;
-        
+        dejaVu = new boolean[nombreMots];
+        composante = new ArrayList<String>();
         //initialisation de la liste des successeur avec des listes vides
         listeSucc  = new Liste[nombreMots];
         for (int i = 0; i < nombreMots; i++) {
             listeSucc[i] = new Liste();
+            dejaVu[i] = false;
         }
         
     }
@@ -127,7 +132,63 @@ public class Graphe {
            "air", "and", "alu", "ami", "arc", "are",
            "art", "apr", "avr", "sur", "mat", "mur" } ;
         Graphe g = new Graphe (dico3court) ;
-        g.lettreQuiSaute () ;
-        g.display();
+        g.lettreQuiSaute();
+        //System.out.println(g.DFS(0));
+        g.visit();
+        
       }
+
+    public String DFS(int x){
+        if(dejaVu[x])
+           return "";
+        dejaVu[x] = true;
+        String result = getWord(x) + " ";
+        
+        Iterator<Integer> it = listeSucc[x].getSucc();
+        for (Iterator<Integer> iterator = it; iterator.hasNext();) {
+            int succ = iterator.next();
+            result += DFS(succ);
+        }
+        return result;
+    }
+    
+    public void visit(){
+        int searchFrom = 0;
+        String tmp_result = "";
+        while((searchFrom = nextComposante()) != -1){
+            tmp_result += DFS(searchFrom);
+            composante.add(tmp_result);
+            tmp_result = "";
+        }
+        
+        int i = 0;
+        for (Iterator iterator = composante.iterator(); iterator.hasNext();) {
+            System.out.println(i++ + ": " + (String) iterator.next());
+        }
+        
+    }
+    
+    public void getComposanteOf(String word){
+        int i = 0;
+        for (Iterator iterator = composante.iterator(); iterator.hasNext();) {
+            if(((String)iterator.next()).contains(word)){
+               System.out.println("La composante du mot \'" + word + "\' est la numéro " + i );
+               return;
+            }
+            i++;
+        }
+        System.out.println("Le mot \'" + word + "\' n'apparaît dans aucune composante.");
+    }
+    
+    private int nextComposante(){
+        for (int i = 0; i < dejaVu.length; i++) {
+            if(dejaVu[i] == false)
+                return i;
+        }
+        return -1;
+    }
+    
+    private String getWord(int x){
+        return motsDepart[x];
+    }
 }
