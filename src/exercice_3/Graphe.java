@@ -13,6 +13,8 @@ public class Graphe {
     protected Liste[]  listeSucc;
     protected boolean[] dejaVu;
     protected ArrayList<String> composante;
+    protected int[] pere;
+    
 
     /*
      * Constructeurs
@@ -27,6 +29,8 @@ public class Graphe {
         nombreMots = lesMots.length;
         dejaVu = new boolean[nombreMots];
         composante = new ArrayList<String>();
+        pere = new int[nombreMots];
+        
         //initialisation de la liste des successeur avec des listes vides
         listeSucc  = new Liste[nombreMots];
         for (int i = 0; i < nombreMots; i++) {
@@ -147,6 +151,7 @@ public class Graphe {
         Iterator<Integer> it = listeSucc[x].getSucc();
         for (Iterator<Integer> iterator = it; iterator.hasNext();) {
             int succ = iterator.next();
+            pere[succ] = x;
             result += DFS(succ);
         }
         return result;
@@ -156,13 +161,14 @@ public class Graphe {
         int searchFrom = 0;
         String tmp_result = "";
         while((searchFrom = nextComposante()) != -1){
+            pere[searchFrom] = -1;
             tmp_result += DFS(searchFrom);
             composante.add(tmp_result);
             tmp_result = "";
         }
         
         int i = 0;
-        for (Iterator iterator = composante.iterator(); iterator.hasNext();) {
+        for (Iterator<String> iterator = composante.iterator(); iterator.hasNext();) {
             System.out.println(i++ + ": " + (String) iterator.next());
         }
         
@@ -170,7 +176,7 @@ public class Graphe {
     
     public void getComposanteOf(String word){
         int i = 0;
-        for (Iterator iterator = composante.iterator(); iterator.hasNext();) {
+        for (Iterator<String> iterator = composante.iterator(); iterator.hasNext();) {
             if(((String)iterator.next()).contains(word)){
                System.out.println("La composante du mot \'" + word + "\' est la numéro " + i );
                return;
@@ -191,4 +197,7 @@ public class Graphe {
     private String getWord(int x){
         return motsDepart[x];
     }
+
+
+
 }
