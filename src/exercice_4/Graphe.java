@@ -12,6 +12,7 @@ public class Graphe {
     protected int      nombreMots;
     protected Liste[]  listeSucc;
     protected boolean[] dejaVu;
+    protected int[] profondeur;
     protected ArrayList<String> composante;
     protected int[] pere;
 
@@ -30,6 +31,12 @@ public class Graphe {
         dejaVu = new boolean[nombreMots];
         composante = new ArrayList<String>();
         pere = new int[nombreMots];
+
+        //initialisation du tableau de profondeur à -1 
+        profondeur = new int[nombreMots];
+        for(int i = 0; i< profondeur.length; i++){
+            profondeur[i] = -1;
+        }
 
         //initialisation de la liste des successeur avec des listes vides
         listeSucc  = new Liste[nombreMots];
@@ -233,29 +240,63 @@ public class Graphe {
             }
         }
     }
-    
+
     public void chemin_bfs(String from, String to){
-        
-        
+
+
         int index_from = getIndice(from,motsDepart);
         int index_to = getIndice(to, motsDepart);
-    
+
         bfs_iteratif(index_from);
-        
+
         String result = to;
         int tmp = index_to;
-        
+
         while(tmp != index_from){
             tmp = pere[tmp];
             result = getWord(tmp) + " " + result;
         }
         System.out.println(result);
+
+    }
+
+    public void exo4_DFS(int x, int depth){
+        if(depth > motsDepart.length){
+            return;
+        }
+        //System.out.println("x " + x + " depth " + depth);
+        String result = getWord(x) + " ";
         
-        
-        
-        
-        
+
+        //profondeur des successeurs
+        depth++;
+
+        Iterator<Integer> it = listeSucc[x].getSucc();
+        for (Iterator<Integer> iterator = it; iterator.hasNext();) {
+            int succ = iterator.next();
+            
+            if(profondeur[succ] == -1 || profondeur[succ] > depth){
+                profondeur[succ] = depth;
+                pere[succ] = x;
+                exo4_DFS(succ,depth);
+            }
+        }
+    }
     
+    public void exo4_chemin_plus_court(String from, String to){
+        exo4_DFS(getIndice(from, motsDepart),0);
+        
+        int index_to = getIndice(to, motsDepart);
+        int index_from = getIndice(from,motsDepart);
+        String result = to;
+        int tmp = index_to;
+
+        while(tmp != index_from){
+            tmp = pere[tmp];
+            result = getWord(tmp) + " " + result;
+        }
+        System.out.println(result);
+
     }
     
 }
