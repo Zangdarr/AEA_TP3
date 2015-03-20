@@ -217,11 +217,13 @@ public class Graphe {
         
         String [] tab_str = str_composant.split(" ");
         int index_to = getIndice(to, tab_str);
-        
-        for (int i = 0; i <= index_to; i++) {
-            System.out.print(tab_str[i]);
+        int index_from = getIndice(from,tab_str);
+        String result = "";
+        int step = (index_from<index_to)?1:-1;
+        for (int i = index_from; i != index_to + step; i += step) {
+            result += tab_str[i] + " ";
         }
-        
+        System.out.println(result);
         
     }
 
