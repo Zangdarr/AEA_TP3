@@ -1,7 +1,7 @@
 package exercice_4;
 import java.util.ArrayList;
 import java.util.Iterator;
-
+import java.util.LinkedList;
 
 public class Graphe {
 
@@ -128,20 +128,6 @@ public class Graphe {
         System.out.println(result);
     }
 
-    public static void main (String[] args) {
-        String[] dico3court = {
-                "gag", "gai", "gaz", "gel", "gks", "gin",
-                "gnu", "glu", "gui", "guy", "gre", "gue",
-                "ace", "acm", "agi", "ait", "aie", "ail",
-                "air", "and", "alu", "ami", "arc", "are",
-                "art", "apr", "avr", "sur", "mat", "mur" } ;
-        Graphe g = new Graphe (dico3court) ;
-        g.lettreQuiSaute();
-        //System.out.println(g.DFS(0));
-        g.visit();
-
-    }
-
     public String DFS(int x){
         if(dejaVu[x])
             return "";
@@ -205,6 +191,7 @@ public class Graphe {
         throw new Error (m + " n'est pas dans le tableau.") ;
 
     }
+
     public void chemin(String from, String to){
         DFS(getIndice(from, motsDepart));
         int composant_from = getComposanteOf(from);
@@ -214,7 +201,7 @@ public class Graphe {
             return;
         }
         String str_composant = composante.get(composant_from);
-        
+
         String [] tab_str = str_composant.split(" ");
         int index_to = getIndice(to, tab_str);
         int index_from = getIndice(from,tab_str);
@@ -224,7 +211,51 @@ public class Graphe {
             result += tab_str[i] + " ";
         }
         System.out.println(result);
-        
+
     }
 
+    public void bfs_iteratif(int x){
+        dejaVu = new boolean[nombreMots];
+        LinkedList<Integer> fifo = new LinkedList<Integer>();
+        fifo.add(x);
+        int current = x;
+        dejaVu[current] = true;
+        while(!fifo.isEmpty()){
+            current = fifo.removeFirst();
+
+            for (Iterator<Integer> iterator = listeSucc[current].getSucc(); iterator.hasNext();) {
+                Integer succ_number = (Integer) iterator.next();
+                if(! dejaVu[succ_number]){
+                    fifo.add(succ_number);
+                    pere[succ_number] = current;
+                    dejaVu[succ_number] = true;
+                }                
+            }
+        }
+    }
+    
+    public void chemin_bfs(String from, String to){
+        
+        
+        int index_from = getIndice(from,motsDepart);
+        int index_to = getIndice(to, motsDepart);
+    
+        bfs_iteratif(index_from);
+        
+        String result = to;
+        int tmp = index_to;
+        
+        while(tmp != index_from){
+            tmp = pere[tmp];
+            result = getWord(tmp) + " " + result;
+        }
+        System.out.println(result);
+        
+        
+        
+        
+        
+    
+    }
+    
 }
