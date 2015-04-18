@@ -48,7 +48,7 @@ Par exemple pour lion et peur on a :
         lion pion paon pain paix noir noix joie rose roue yeux ceux deux doux leur heur peur 
 
 * Pour ce faire, on verifie que les deux mots font partie de la même composante connexe. Pour lion et peur on est OK.
-* Puis on parcour la composante connexe commune du début, jusqu'à trouver un des deux mots on ignore ceux que l'on parcours. 
+* On parcour ensuite la composante connexe commune du début. Tant qu'on n'a pas trouvé un des deux mots, on ignore tous ceux que l'on parcours. 
 * Une fois qu'on en trouve un, on considère tous les mots que l'on va croiser jusqu'à atteindre le deuxième mot(inclue bien sur).
 
 (Execution du main de l'exercice 3)
@@ -65,7 +65,7 @@ Ensuite on se sert de ce que l'on vient de faire pour améliorer notre calcul de
         Amelioration de l'exo 3 :
         lion pion paon pain paix poix poux pour peur
 
-Pour cette amélioration on modifie le DFS de l'exercice trois pour redéfinir la liste des successeurs du mot de façon a avoir tout les mots :
+Pour cette amélioration on modifie le DFS de l'exercice trois pour redéfinir la liste des successeurs du mot de façon à avoir tous les mots :
 Lancement du DFS
 * on parcours la liste des successeurs du mot
 * * [SI] on a pas encore mis de père au successeur 
