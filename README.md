@@ -19,7 +19,7 @@ L'algorithme est très simple, il s'agit de deux boucles imbriquées qui :
 * * parcours des mots différents de ce déjà traités ou entrain d'être traités par la première boucle
 * * * si le mot courant à une différence d'une seule lettre avec, alors on ajoute une arête entre les deux mots.
 
-(Execution du main de l'exercice 1)
+(Exécution du main de l'exercice 1)
 
 
 ## Exercice 2 : 
@@ -37,7 +37,7 @@ Grâce à cela on est capable de dire si deux mots font partie de la même compo
         La composante du mot 'lion' est la numéro 0
         La composante du mot 'peur' est la numéro 0
 
-(Execution du main de l'exercice 2)
+(Exécution du main de l'exercice 2)
 
 
 
@@ -51,7 +51,7 @@ Par exemple pour lion et peur on a :
 * On parcour ensuite la composante connexe commune du début. Tant qu'on n'a pas trouvé un des deux mots, on ignore tous ceux que l'on parcours. 
 * Une fois qu'on en trouve un, on considère tous les mots que l'on va croiser jusqu'à atteindre le deuxième mot(inclue bien sur).
 
-(Execution du main de l'exercice 3)
+(Exécution du main de l'exercice 3)
 
 ## Exercice 4 :
 Dans cet exercice on calcul le plus court chemin entre deux mots d'un dictionnaire.
@@ -73,4 +73,4 @@ Lancement du DFS
 * * [ALORS] on le choisit le mot comme père du succ car cela signifie qu'on aura trouvé un chemin plus court pour atteindre ce succ
   On lance le DFS pour le successeur avec pour profondeur la profondeur actuelle + 1 car on s'enfonce de 1 dans le graphe.
 
-(Execution du main de l'exercice 4)
+(Exécution du main de l'exercice 4)
